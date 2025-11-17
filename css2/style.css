@@ -215,8 +215,9 @@ button {
 .header_section {
     width: 100%;
     background-color: #00a651;
-    height: auto;
-    background-size: 100%;
+    height: 65px;
+    display: flex;
+    align-items: center;
 }
 
 .header_bg {
@@ -293,15 +294,18 @@ button {
     float: left;
     padding-left: 90px;
     padding-top: 40px;
+
+    display: flex;              /* tambahkan */
+    flex-direction: column;     /* tambahkan */
 }
 
-.banner_taital {
-    width: 50%;
-    float: left;
-    font-size: 50px;
+.banner_taital { 
+    font-size: 33px;
     color: #2c2c2c;
     font-weight: bold;
+    display: block;          /* pastikan tampil per baris */
 }
+
 
 .banner_text {
     width: 100%;

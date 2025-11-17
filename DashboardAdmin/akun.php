@@ -262,7 +262,6 @@ if (!isset($_SESSION['username'])) {
                                 <h4 class="modal-title">Hapus Akun - <?= $item['username']; ?></h4>
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                               </div>
-
                               <!-- Modal body -->
                               <div class="modal-body">
                                 Apakah Anda yakin ingin menghapus Akun ini?
