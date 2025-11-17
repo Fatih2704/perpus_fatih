@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Feb 2024 pada 15.13
--- Versi server: 10.4.32-MariaDB
--- Versi PHP: 8.2.12
+-- Generation Time: Nov 17, 2025 at 06:52 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ukk_fatih`
+-- Database: `projek_basisdata`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `buku`
+-- Table structure for table `buku`
 --
 
 CREATE TABLE `buku` (
@@ -41,7 +41,7 @@ CREATE TABLE `buku` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `buku`
+-- Dumping data for table `buku`
 --
 
 INSERT INTO `buku` (`cover`, `id_buku`, `kategori`, `judul`, `pengarang`, `penerbit`, `thn_terbit`, `jml_halaman`, `deskripsi`, `isi_buku`) VALUES
@@ -53,7 +53,7 @@ INSERT INTO `buku` (`cover`, `id_buku`, `kategori`, `judul`, `pengarang`, `pener
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategori_buku`
+-- Table structure for table `kategori_buku`
 --
 
 CREATE TABLE `kategori_buku` (
@@ -61,7 +61,7 @@ CREATE TABLE `kategori_buku` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `kategori_buku`
+-- Dumping data for table `kategori_buku`
 --
 
 INSERT INTO `kategori_buku` (`kategori`) VALUES
@@ -77,7 +77,7 @@ INSERT INTO `kategori_buku` (`kategori`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `member`
+-- Table structure for table `member`
 --
 
 CREATE TABLE `member` (
@@ -89,17 +89,10 @@ CREATE TABLE `member` (
   `alamat` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data untuk tabel `member`
---
-
-INSERT INTO `member` (`nisn`, `nama`, `password`, `kelas`, `jurusan`, `alamat`) VALUES
-(212210154, 'fatih', '123', 'XII', 'Rekayasa Perangkat Lunak', 'Depok');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `peminjaman`
+-- Table structure for table `peminjaman`
 --
 
 CREATE TABLE `peminjaman` (
@@ -116,7 +109,7 @@ CREATE TABLE `peminjaman` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -129,38 +122,30 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `user`
---
-
-INSERT INTO `user` (`id`, `username`, `password`, `nama`, `no_telp`, `sebagai`) VALUES
-(44, 'fatih', '123', 'fatih', '085692569477', 'admin'),
-(45, 'MFH', '123', 'Fatih', '081519561600', 'petugas');
-
---
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `buku`
+-- Indexes for table `buku`
 --
 ALTER TABLE `buku`
   ADD PRIMARY KEY (`id_buku`),
   ADD KEY `kategori` (`kategori`);
 
 --
--- Indeks untuk tabel `kategori_buku`
+-- Indexes for table `kategori_buku`
 --
 ALTER TABLE `kategori_buku`
   ADD PRIMARY KEY (`kategori`);
 
 --
--- Indeks untuk tabel `member`
+-- Indexes for table `member`
 --
 ALTER TABLE `member`
   ADD PRIMARY KEY (`nisn`);
 
 --
--- Indeks untuk tabel `peminjaman`
+-- Indexes for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
   ADD PRIMARY KEY (`id`),
@@ -169,45 +154,45 @@ ALTER TABLE `peminjaman`
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `member`
+-- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
   MODIFY `nisn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=212210155;
 
 --
--- AUTO_INCREMENT untuk tabel `peminjaman`
+-- AUTO_INCREMENT for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `buku`
+-- Constraints for table `buku`
 --
 ALTER TABLE `buku`
   ADD CONSTRAINT `buku_ibfk_1` FOREIGN KEY (`kategori`) REFERENCES `kategori_buku` (`kategori`);
 
 --
--- Ketidakleluasaan untuk tabel `peminjaman`
+-- Constraints for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
   ADD CONSTRAINT `peminjaman_ibfk_1` FOREIGN KEY (`nisn`) REFERENCES `member` (`nisn`),
